@@ -1,0 +1,22 @@
+{
+  "users": [],
+  "missions": [
+    {
+      "id": "m1",
+      "title": "Phishing: Email Review",
+      "category": "Phishing",
+      "base_points": 100,
+      "time_limit_seconds": 180,
+      "hint_cost": 10
+    },
+    {
+      "id": "m2",
+      "title": "Malware: Behavior Log",
+      "category": "Malware",
+      "base_points": 120,
+      "time_limit_seconds": 240,
+      "hint_cost": 15
+    }
+  ],
+  "attempts": []
+}

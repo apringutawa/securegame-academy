@@ -1,0 +1,2 @@
+import { NextResponse } from 'next/server';import { readDB } from '@lib/db';
+export async function GET(){ const db=await readDB(); const rows=db.attempts; const headers=['id','user_email','mission_id','finalScore','accuracy','timeTakenSeconds','hintsUsed','created_at']; const csv=[headers.join(',')].concat(rows.map((r:any)=>headers.map(h=>String(r[h as keyof typeof r]??'')).join(','))).join('\n'); return new NextResponse(csv,{status:200,headers:{'Content-Type':'text/csv; charset=utf-8','Content-Disposition':'attachment; filename="attempts.csv"'}}); }

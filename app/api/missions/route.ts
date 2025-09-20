@@ -1,0 +1,3 @@
+import { NextResponse } from 'next/server';import { readDB, writeDB, uid } from '@lib/db';
+export async function GET(){ const db=await readDB(); return NextResponse.json(db.missions); }
+export async function POST(req:Request){ const {title,category,base_points=100,time_limit_seconds=180,hint_cost=10}=await req.json(); if(!title||!category) return NextResponse.json({error:'title & category required'},{status:400}); const db=await readDB(); const m={id:uid(),title,category,base_points:Number(base_points),time_limit_seconds:Number(time_limit_seconds),hint_cost:Number(hint_cost)}; db.missions.push(m); await writeDB(db); return NextResponse.json(m,{status:201}); }
